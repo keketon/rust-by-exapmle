@@ -1,29 +1,29 @@
+#[derive(Debug)]
+struct Rectangle {
+  width: u32,
+  height: u32,
+}
+
+impl Rectangle {
+  fn can_hold(&self, other: &Rectangle) -> bool {
+    self.width > other.width && self.height > other.height
+  }
+}
+
 fn main() {
-  fizz_buzz_to(30);
-}
+  let rect1 = Rectangle {
+    width: 30,
+    height: 50,
+  };
+  let rect2 = Rectangle {
+    width: 10,
+    height: 40,
+  };
+  let rect3 = Rectangle {
+    width: 60,
+    height: 45,
+  };
 
-fn fizz_buzz_to(n: u32) {
-  for i in 1..=n {
-    fizz_buzz(i);
-  }
-}
-
-fn fizz_buzz(n: u32) -> () {
-  if is_dividable_by(n, 15) {
-    println!("FizzBuzz");
-  } else if is_dividable_by(n, 5) {
-    println!("Buzz");
-  } else if is_dividable_by(n, 3) {
-    println!("Fizz");
-  } else {
-    println!("{}", n);
-  }
-}
-
-fn is_dividable_by(lhs: u32, rhs: u32) -> bool {
-  if rhs == 0 {
-    return false;
-  }
-
-  lhs % rhs == 0
+  println!("rect1 can hold rect2: {}", rect1.can_hold(&rect2));
+  println!("rect1 can hold rect3: {}", rect1.can_hold(&rect3));
 }
