@@ -1,20 +1,29 @@
 fn main() {
-  println!("{} days", 31);
-  println!("{:?} days", 31);
-  // println!("{} is invalid UnPrintable", UnPrintable(1));
-  // println!("{:?} is UnPrintable", UnPrintable(2));
-  // println!("{} is invalid Printable", Printable(3));
-  println!("{:?} is Printable", Printable(4));
-  println!("{:#?} is Printable", Printable(4));
-  // println!("{} is invalid Deep", Deep(Printable(5)));
-  println!("{:?} is Deep", (Deep(Printable(6))));
-  println!("{:#?} is Deep", (Deep(Printable(6))));
+  fizz_buzz_to(30);
 }
 
-struct UnPrintable(i32);
+fn fizz_buzz_to(n: u32) {
+  for i in 1..=n {
+    fizz_buzz(i);
+  }
+}
 
-#[derive(Debug)]
-struct Printable(i32);
+fn fizz_buzz(n: u32) -> () {
+  if is_dividable_by(n, 15) {
+    println!("FizzBuzz");
+  } else if is_dividable_by(n, 5) {
+    println!("Buzz");
+  } else if is_dividable_by(n, 3) {
+    println!("Fizz");
+  } else {
+    println!("{}", n);
+  }
+}
 
-#[derive(Debug)]
-struct Deep(Printable);
+fn is_dividable_by(lhs: u32, rhs: u32) -> bool {
+  if rhs == 0 {
+    return false;
+  }
+
+  lhs % rhs == 0
+}
