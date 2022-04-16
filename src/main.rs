@@ -11,10 +11,10 @@ fn main() {
   println!("{:#?} is Deep", (Deep(Printable(6))));
 }
 
-struct UnPrintable (i32);
+struct UnPrintable(i32);
 
 #[derive(Debug)]
-struct Printable (i32);
+struct Printable(i32);
 
 #[derive(Debug)]
-struct Deep (Printable);
+struct Deep(Printable);
