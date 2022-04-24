@@ -3,5 +3,5 @@
 members = [
     "minigrep",
     "rust-by-example",
-    "cons-list",
+    "smart-pointer",
 ]
