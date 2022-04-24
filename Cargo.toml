@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "minigrep",
+    "rust-by-example"
+]
