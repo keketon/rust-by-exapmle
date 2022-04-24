@@ -2,5 +2,6 @@
 
 members = [
     "minigrep",
-    "rust-by-example"
+    "rust-by-example",
+    "cons-list",
 ]
