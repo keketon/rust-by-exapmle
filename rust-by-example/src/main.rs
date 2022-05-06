@@ -1,8 +1,23 @@
-#![allow(unused)]
+use std::sync::{Arc, Mutex};
+use std::thread;
+
 fn main() {
-  let v1: Vec<i32> = vec![1, 2, 3];
+  let counter = Arc::new(Mutex::new(0));
+  let mut handles = vec![];
 
-  let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+  for _ in 0..100000 {
+    let counter = Arc::clone(&counter);
+    let handle = thread::spawn(move || {
+      let mut num = counter.lock().unwrap();
 
-  assert_eq!(v2, vec![2, 3, 4]);
+      *num += 1;
+    });
+    handles.push(handle);
+  }
+
+  for handle in handles {
+    handle.join().unwrap();
+  }
+
+  println!("Result: {}", *counter.lock().unwrap());
 }
