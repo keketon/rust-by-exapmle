@@ -5,5 +5,5 @@ members = [
     "rust-by-example",
     "smart-pointer",
     "oop",
-    "web-server"
+    "web_server"
 ]
